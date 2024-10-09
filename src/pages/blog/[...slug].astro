@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={entry.data.title}>
+  <article>
+    <h1>{entry.data.title}</h1>
+    <p>投稿日: {entry.data.pubDate.toLocaleDateString('ja-JP')}</p>
+    <div class="tags">
+      {entry.data.tags.map(tag => (
+        <a href={`/tags/${tag}`} class="tag">{tag}</a>
+      ))}
+    </div>
+    <Content />
+  </article>
+</Layout>
+
+<style>
+  article {
+    max-width: 65ch;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+  }
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+  .tag {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-decoration: none;
+  }
+</style>

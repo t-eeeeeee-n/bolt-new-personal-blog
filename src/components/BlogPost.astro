@@ -1,0 +1,24 @@
+---
+interface Props {
+  title: string;
+  slug: string;
+  excerpt: string;
+  date: Date;
+  tags: string[];
+}
+
+const { title, slug, excerpt, date, tags } = Astro.props;
+---
+
+<li class="blog-post">
+  <a href={`/blog/${slug}`}>
+    <h2>{title}</h2>
+    <p class="date">{date.toLocaleDateString('ja-JP')}</p>
+    <p>{excerpt}</p>
+    <div class="tags">
+      {tags.map(tag => (
+        <span class="tag">{tag}</span>
+      ))}
+    </div>
+  </a>
+</li>
