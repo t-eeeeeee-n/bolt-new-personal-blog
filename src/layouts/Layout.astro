@@ -1,5 +1,6 @@
 ---
-import '../styles/global.css';
+// import '../styles/global.css';
+import '../styles/tailwind.css';
 
 interface Props {
   title: string;
@@ -10,27 +11,29 @@ const { title } = Astro.props;
 
 <!doctype html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="私の個人ブログサイト" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <body>
-    <header>
-      <nav class="container">
-        <a href="/">ホーム</a>
-        <a href="/about">私について</a>
-        <a href="/tags">タグ一覧</a>
-      </nav>
-    </header>
-    <main class="container">
-      <slot />
-    </main>
-    <footer>
-      <p>&copy; 2023 私のブログ. All rights reserved.</p>
-    </footer>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="私の個人ブログサイト" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="generator" content={Astro.generator} />
+  <title>{title}</title>
+</head>
+<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
+<header class="bg-blue-600 text-white py-4 shadow-md">
+  <nav class="container mx-auto flex justify-center items-center space-x-6">
+    <a href="/" class="hover:underline font-medium">ホーム</a>
+    <a href="/about" class="hover:underline font-medium">私について</a>
+    <a href="/tags" class="hover:underline font-medium">タグ一覧</a>
+  </nav>
+</header>
+<main class="mx-auto flex-1 py-6">
+  <slot />
+</main>
+<footer class="bg-blue-600 text-white py-4">
+  <div class="container mx-auto text-center">
+    <p>&copy; 2023 私のブログ. All rights reserved.</p>
+  </div>
+</footer>
+</body>
 </html>

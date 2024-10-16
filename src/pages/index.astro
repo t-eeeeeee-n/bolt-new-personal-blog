@@ -9,46 +9,26 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <Layout title="私のブログ">
-  <h1>ようこそ、<span class="text-gradient">私のブログ</span>へ</h1>
-  <p class="instructions">
-    ここでは、私の日常や考えを共有していきます。
-  </p>
-  <form class="search-form" action="/search">
-    <input type="text" name="q" placeholder="ブログ内を検索..." class="search-input">
-  </form>
-  <ul class="post-list">
-    {posts.map((post) => (
-      <BlogPost
-        title={post.data.title}
-        slug={post.slug}
-        excerpt={post.data.description}
-        date={post.data.pubDate}
-        tags={post.data.tags}
-      />
-    ))}
-  </ul>
+  <div class="container mx-auto px-6 lg:px-16 max-w-5xl">
+    <h1 class="text-5xl font-extrabold text-center mb-8">
+      ようこそ、<span class="bg-gradient-to-r from-blue-600 to-green-400 bg-clip-text text-transparent">私のブログ</span>へ
+    </h1>
+    <form class="mb-8 w-full max-w-md mx-auto">
+      <label class="block">
+        <input type="text" name="q" placeholder="ブログ内を検索..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm">
+      </label>
+    </form>
+    <ul class="space-y-6">
+      {posts.map((post) => (
+          <BlogPost
+              title={post.data.title}
+              slug={post.slug}
+              excerpt={post.data.description}
+              date={post.data.pubDate}
+              tags={post.data.tags}
+          />
+      ))}
+    </ul>
+  </div>
 </Layout>
 
-<style>
-  h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    margin-bottom: 1em;
-  }
-  .text-gradient {
-    background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  }
-  .instructions {
-    margin-bottom: 2rem;
-    border: 1px solid var(--secondary-color);
-    background: linear-gradient(rgba(var(--primary-color), 0.1), rgba(var(--secondary-color), 0.1));
-    padding: 1.5rem;
-    border-radius: 8px;
-  }
-</style>

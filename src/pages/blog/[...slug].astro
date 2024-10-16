@@ -14,38 +14,16 @@ const { Content } = await entry.render();
 ---
 
 <Layout title={entry.data.title}>
-  <article>
-    <h1>{entry.data.title}</h1>
-    <p>投稿日: {entry.data.pubDate.toLocaleDateString('ja-JP')}</p>
-    <div class="tags">
+  <article class="max-w-4xl mx-auto p-8 bg-white shadow-md rounded-lg">
+    <h1 class="text-4xl font-bold mb-4 text-blue-600">{entry.data.title}</h1>
+    <p class="text-sm text-gray-500 mb-4">投稿日: {entry.data.pubDate.toLocaleDateString('ja-JP')}</p>
+    <div class="tags flex gap-2 mb-6">
       {entry.data.tags.map(tag => (
-        <a href={`/tags/${tag}`} class="tag">{tag}</a>
+          <a href={`/tags/${tag}`} class="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs hover:bg-blue-200">{tag}</a>
       ))}
     </div>
-    <Content />
+    <div class="prose max-w-none">
+      <Content />
+    </div>
   </article>
 </Layout>
-
-<style>
-  article {
-    max-width: 65ch;
-    margin: 0 auto;
-  }
-  h1 {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-  }
-  .tags {
-    display: flex;
-    gap: 0.5rem;
-    margin: 1rem 0;
-  }
-  .tag {
-    background-color: var(--secondary-color);
-    color: white;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    text-decoration: none;
-  }
-</style>

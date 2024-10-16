@@ -5,36 +5,30 @@ import { getCollection } from 'astro:content';
 
 const query = Astro.url.searchParams.get('q') || '';
 const posts = await getCollection('blog');
-const filteredPosts = posts.filter(post => 
-  post.data.title.toLowerCase().includes(query.toLowerCase()) ||
-  post.data.description.toLowerCase().includes(query.toLowerCase()) ||
-  post.body.toLowerCase().includes(query.toLowerCase())
+const filteredPosts = posts.filter(post =>
+    post.data.title.toLowerCase().includes(query.toLowerCase()) ||
+    post.data.description.toLowerCase().includes(query.toLowerCase()) ||
+    post.body.toLowerCase().includes(query.toLowerCase())
 );
 ---
 
 <Layout title={`"${query}"の検索結果`}>
-  <h1>"{query}"の検索結果</h1>
-  {filteredPosts.length > 0 ? (
-    <ul class="post-list">
-      {filteredPosts.map(post => (
-        <BlogPost
-          title={post.data.title}
-          slug={post.slug}
-          excerpt={post.data.description}
-          date={post.data.pubDate}
-          tags={post.data.tags}
-        />
-      ))}
-    </ul>
-  ) : (
-    <p>検索結果が見つかりませんでした。</p>
-  )}
+  <div class="container mx-auto px-6 lg:px-16 max-w-5xl">
+    <h1 class="text-3xl font-semibold mb-6 text-center text-blue-600">"{query}"の検索結果</h1>
+    {filteredPosts.length > 0 ? (
+        <ul class="space-y-6">
+          {filteredPosts.map(post => (
+              <BlogPost
+                  title={post.data.title}
+                  slug={post.slug}
+                  excerpt={post.data.description}
+                  date={post.data.pubDate}
+                  tags={post.data.tags}
+              />
+          ))}
+        </ul>
+    ) : (
+        <p class="text-center text-gray-600">検索結果が見つかりませんでした。</p>
+    )}
+  </div>
 </Layout>
-
-<style>
-  h1 {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-  }
-</style>

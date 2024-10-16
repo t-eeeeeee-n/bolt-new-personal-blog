@@ -3,34 +3,21 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="私について - 私のブログ">
-  <main>
-    <h1>私について</h1>
-    <p>
-      こんにちは！私は[あなたの名前]です。このブログでは、私の日常生活や興味のあるトピックについて書いていきます。
-    </p>
-    <p>
-      私の趣味は[趣味1]と[趣味2]です。また、[専門分野や職業]として働いています。
-    </p>
-    <p>
-      このブログを通じて、私の経験や知識を共有し、読者の皆さんと交流できることを楽しみにしています。
-    </p>
-  </main>
+  <div class="md:container mx-auto md:px-6 lg:px-16 max-w-5xl">
+    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-10 w-full">
+      <h1 class="text-4xl font-extrabold text-blue-600 dark:text-blue-400 mb-8 text-center">私について</h1>
+      <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+        こんにちは！私は荒井天匠と申します。普段はソフトウェアエンジニアとして、ウェブアプリケーションの開発や、バックエンドシステムの設計・構築に携わっています。このブログでは、私の日常や興味を持っているトピックについて気ままに書いていきたいと思います。
+      </p>
+      <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+        私の趣味は絵を描くことと、服を見に行くことです。アートやデザインに対する情熱があり、空いた時間には新しい技法を試したり、最新のファッションにインスピレーションを受けて創作活動に励んでいます。また、カフェでのんびり過ごすことも好きで、新しい場所を探すのも楽しみの一つです。
+      </p>
+      <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+        私は日常の中で、技術とクリエイティビティの融合を追求しています。ソフトウェアエンジニアとして、効率的でエレガントなコードを書くことに注力し、ユーザーエクスペリエンスを向上させるプロダクト作りを目指しています。また、絵やファッションの趣味を通して培った視覚的な感覚を、デザインやUI/UXの設計にも活かしています。
+      </p>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        このブログを通じて、同じような興味や趣味を持つ方々とつながり、技術やデザインについての意見交換ができれば嬉しいです。コメントやメッセージをお待ちしていますので、どうぞお気軽に交流してください！
+      </p>
+    </div>
+  </div>
 </Layout>
-
-<style>
-  main {
-    margin: auto;
-    padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 2rem);
-    color: white;
-    font-size: 20px;
-    line-height: 1.6;
-  }
-  h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: 1em;
-  }
-</style>
